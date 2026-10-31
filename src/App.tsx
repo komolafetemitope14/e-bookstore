@@ -338,7 +338,7 @@ function App() {
             </div>
 
             <div className="purchase-box">
-              <p className="purchase-label">Your copy</p>
+              <p className="purchase-label">Digital Edition</p>
               <h3>Raising Beyond Today</h3>
               <p className="purchase-subtitle">
                 A Practical Guide to Intentional Parenting in a Digital World
@@ -346,7 +346,7 @@ function App() {
 
               <div className="price-placeholder">
                 <span>Book price</span>
-                <strong>To be confirmed</strong>
+                <strong>₦100</strong>
               </div>
 
               <button
@@ -354,17 +354,18 @@ function App() {
                 type="button"
                 onClick={() =>
                   window.alert(
-                    'Online checkout is coming soon. Paystack will be connected after the storefront is approved.',
+                    'Secure e-book checkout is being prepared. Account access and Paystack payment will be enabled after UAT testing.',
                   )
                 }
               >
-                Buy Now
+                Buy E-Book
                 <span aria-hidden="true">→</span>
               </button>
 
               <p className="checkout-note">
-                Secure online payment will be enabled after the storefront is
-                approved and tested.
+                Secure account access and Paystack payment will be enabled
+                after UAT testing. Only verified purchasers will receive
+                access to the e-book.
               </p>
             </div>
           </div>
@@ -398,12 +399,21 @@ function App() {
               <a href="#book">The Book</a>
               <a href="#themes">Key Themes</a>
               <a href="#author">The Author</a>
+              <a href="#buy">Buy E-Book</a>
+            </div>
+
+            <div>
+              <h3>Contact</h3>
+              <a href="tel:08032739874">08032739874</a>
+              <a href="mailto:abimbolaolamoju93@gmail.com">
+                abimbolaolamoju93@gmail.com
+              </a>
             </div>
 
             <div>
               <h3>Information</h3>
-              <span>Delivery</span>
-              <span>Returns</span>
+              <span>Digital Access</span>
+              <span>Refund Policy</span>
               <span>Privacy</span>
               <span>Terms</span>
             </div>
