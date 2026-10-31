@@ -745,14 +745,24 @@
 
 .purchase-box {
   display: flex;
-  padding: 58px;
+  padding: 48px;
   flex-direction: column;
   justify-content: center;
-  background: var(--cream);
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(216, 185, 91, 0.14),
+      transparent 30%
+    ),
+    var(--cream);
+}
+
+.purchase-box-heading {
+  margin-bottom: 25px;
 }
 
 .purchase-label {
-  margin: 0 0 12px;
+  margin: 0 0 10px;
   color: var(--green-700);
   font-family: "DM Sans", sans-serif;
   font-size: 10px;
@@ -764,68 +774,249 @@
 .purchase-box h3 {
   margin: 0;
   color: var(--green-950);
-  font-family: "Playfair Display", serif;
-  font-size: 30px;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 34px;
+  line-height: 1.1;
 }
 
 .purchase-subtitle {
-  margin: 10px 0 28px;
+  max-width: 430px;
+  margin: 10px 0 0;
   color: var(--muted);
   font-family: "DM Sans", sans-serif;
   font-size: 13px;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
-.price-placeholder {
+.edition-options {
   display: grid;
-  margin-bottom: 25px;
-  padding: 19px 0;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.edition-option {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  padding: 22px;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(23, 60, 43, 0.12);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.62);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.edition-option:hover {
+  transform: translateY(-2px);
+  border-color: rgba(23, 60, 43, 0.24);
+  box-shadow: 0 15px 35px rgba(23, 60, 43, 0.08);
+}
+
+.edition-option-featured {
+  border-color: rgba(179, 145, 43, 0.42);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.82),
+      rgba(246, 239, 214, 0.62)
+    );
+}
+
+.edition-topline {
+  display: flex;
+  margin-bottom: 17px;
   align-items: center;
-  border-top: 1px solid rgba(23, 60, 43, 0.12);
-  border-bottom: 1px solid rgba(23, 60, 43, 0.12);
+  justify-content: space-between;
+  gap: 14px;
 }
 
-.price-placeholder span {
-  grid-column: 1;
-}
-
-.price-placeholder strong {
-  grid-column: 2;
-  justify-self: center;
-}
-
-.price-placeholder span {
-  color: var(--muted);
+.edition-badge {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 25px;
+  padding: 0 10px;
+  align-items: center;
+  border-radius: 999px;
+  color: var(--green-950);
+  background: var(--gold);
   font-family: "DM Sans", sans-serif;
-  font-size: 12px;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
-.price-placeholder strong {
-  color: var(--green-900);
+.edition-badge-physical {
+  color: var(--cream);
+  background: var(--green-800);
+}
+
+.edition-availability {
+  color: #77837b;
   font-family: "DM Sans", sans-serif;
-  font-size: 22px;
+  font-size: 9px;
+  font-weight: 600;
+  text-align: right;
+}
+
+.edition-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.edition-type {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--green-700);
+  font-family: "DM Sans", sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.edition-option h4 {
+  margin: 0;
+  color: var(--green-950);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 25px;
+  line-height: 1.15;
+}
+
+.edition-price-block {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: flex-end;
+  flex-direction: column;
+}
+
+.edition-price-block span {
+  margin-bottom: 3px;
+  color: #879188;
+  font-family: "DM Sans", sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.edition-price-block strong {
+  color: var(--green-950);
+  font-family: "DM Sans", sans-serif;
+  font-size: 25px;
   font-weight: 700;
   line-height: 1;
+}
+
+.edition-description {
+  margin: 14px 0 16px;
+  color: var(--muted);
+  font-family: "DM Sans", sans-serif;
+  font-size: 11px;
+  line-height: 1.65;
+}
+
+.edition-benefits {
+  display: grid;
+  margin: 0 0 20px;
+  padding: 0;
+  gap: 7px;
+  list-style: none;
+}
+
+.edition-benefits li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #536158;
+  font-family: "DM Sans", sans-serif;
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+.edition-benefits li span {
+  display: inline-flex;
+  width: 17px;
+  height: 17px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--cream);
+  background: var(--green-700);
+  font-size: 9px;
+  font-weight: 700;
 }
 
 .button-gold {
   width: 100%;
   color: var(--green-950);
   background: var(--gold);
+  box-shadow: 0 10px 24px rgba(179, 145, 43, 0.18);
+}
+
+.button-outline {
+  width: 100%;
+  color: var(--cream);
+  border: 1px solid var(--green-900);
+  background: var(--green-900);
+}
+
+.button-outline:hover {
+  box-shadow: 0 10px 24px rgba(23, 60, 43, 0.16);
 }
 
 .purchase-button {
-  min-height: 56px;
+  min-height: 52px;
+  padding-right: 20px;
+  padding-left: 20px;
+  justify-content: space-between;
+  font-size: 12px;
 }
 
-.checkout-note {
-  margin: 16px 0 0;
+.payment-assurance {
+  display: flex;
+  margin-top: 18px;
+  padding: 15px 17px;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid rgba(23, 60, 43, 0.1);
+}
+
+.payment-lock {
+  display: inline-flex;
+  width: 29px;
+  height: 29px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--cream);
+  background: var(--green-800);
+  font-family: "DM Sans", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.payment-assurance p {
+  margin: 0;
   color: #7b857f;
   font-family: "DM Sans", sans-serif;
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+.payment-assurance strong {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--green-900);
   font-size: 10px;
-  line-height: 1.6;
-  text-align: center;
 }
 
 .site-footer {
@@ -1147,6 +1338,14 @@
   .purchase-copy,
   .purchase-box {
     padding: 36px 25px;
+  }
+
+  .edition-options {
+    grid-template-columns: 1fr;
+  }
+
+  .edition-description {
+    min-height: auto;
   }
 
   .footer-main {

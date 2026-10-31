@@ -338,35 +338,122 @@ function App() {
             </div>
 
             <div className="purchase-box">
-              <p className="purchase-label">Digital Edition</p>
-              <h3>Raising Beyond Today</h3>
-              <p className="purchase-subtitle">
-                A Practical Guide to Intentional Parenting in a Digital World
-              </p>
-
-              <div className="price-placeholder">
-                <span>Book price</span>
-                <strong>₦100</strong>
+              <div className="purchase-box-heading">
+                <p className="purchase-label">Choose Your Edition</p>
+                <h3>Get your copy</h3>
+                <p className="purchase-subtitle">
+                  Select how you would like to experience Raising Beyond Today.
+                </p>
               </div>
 
-              <button
-                className="button button-gold purchase-button"
-                type="button"
-                onClick={() =>
-                  window.alert(
-                    'Secure e-book checkout is being prepared. Account access and Paystack payment will be enabled after UAT testing.',
-                  )
-                }
-              >
-                Buy E-Book
-                <span aria-hidden="true">→</span>
-              </button>
+              <div className="edition-options">
+                <article className="edition-option edition-option-featured">
+                  <div className="edition-topline">
+                    <span className="edition-badge">Digital Access</span>
+                    <span className="edition-availability">Instant after payment</span>
+                  </div>
 
-              <p className="checkout-note">
-                Secure account access and Paystack payment will be enabled
-                after UAT testing. Only verified purchasers will receive
-                access to the e-book.
-              </p>
+                  <div className="edition-heading">
+                    <div>
+                      <span className="edition-type">E-Book Edition</span>
+                      <h4>E-Book</h4>
+                    </div>
+
+                    <div className="edition-price-block">
+                      <span>Book price</span>
+                      <strong>₦100</strong>
+                    </div>
+                  </div>
+
+                  <p className="edition-description">
+                    Secure online access to the digital edition through your
+                    personal account after payment is verified.
+                  </p>
+
+                  <ul className="edition-benefits">
+                    <li>
+                      <span aria-hidden="true">✓</span>
+                      Protected digital access
+                    </li>
+                    <li>
+                      <span aria-hidden="true">✓</span>
+                      Available after verified payment
+                    </li>
+                  </ul>
+
+                  <button
+                    className="button button-gold purchase-button"
+                    type="button"
+                    onClick={() =>
+                      window.alert(
+                        'E-book checkout will be connected to Paystack during UAT.',
+                      )
+                    }
+                  >
+                    Pay ₦100 for E-Book
+                    <span aria-hidden="true">→</span>
+                  </button>
+                </article>
+
+                <article className="edition-option">
+                  <div className="edition-topline">
+                    <span className="edition-badge edition-badge-physical">
+                      Physical Copy
+                    </span>
+                    <span className="edition-availability">
+                      Delivery information required
+                    </span>
+                  </div>
+
+                  <div className="edition-heading">
+                    <div>
+                      <span className="edition-type">Printed Edition</span>
+                      <h4>Hard Cover</h4>
+                    </div>
+
+                    <div className="edition-price-block">
+                      <span>Book price</span>
+                      <strong>₦150</strong>
+                    </div>
+                  </div>
+
+                  <p className="edition-description">
+                    Receive a physical hard-cover copy. We will collect the
+                    recipient's delivery information during checkout.
+                  </p>
+
+                  <ul className="edition-benefits">
+                    <li>
+                      <span aria-hidden="true">✓</span>
+                      Physical hard-cover edition
+                    </li>
+                  </ul>
+
+                  <button
+                    className="button button-outline purchase-button"
+                    type="button"
+                    onClick={() =>
+                      window.alert(
+                        'Hard-cover checkout and delivery details will be connected during UAT.',
+                      )
+                    }
+                  >
+                    Pay ₦150 for Hard Cover
+                    <span aria-hidden="true">→</span>
+                  </button>
+                </article>
+              </div>
+
+              <div className="payment-assurance">
+                <span className="payment-lock" aria-hidden="true">
+                  ✓
+                </span>
+                <p>
+                  <strong>Secure checkout</strong>
+                  Payment confirmation will only happen after successful
+                  server-side verification.
+                </p>
+              </div>
             </div>
           </div>
         </section>
