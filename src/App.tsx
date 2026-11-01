@@ -1,4 +1,7 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import type { Session } from '@supabase/supabase-js'
+import AuthModal from './components/AuthModal'
+import { supabase } from './lib/supabase'
 import './App.css'
 
 const themes = [
@@ -31,8 +34,54 @@ const themes = [
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [authOpen, setAuthOpen] = useState(false)
+  const [session, setSession] = useState<Session | null>(null)
 
   const closeMenu = () => setMenuOpen(false)
+
+  useEffect(() => {
+    let active = true
+
+    supabase.auth.getSession().then(({ data }) => {
+      if (active) {
+        setSession(data.session)
+      }
+    })
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, nextSession) => {
+      setSession(nextSession)
+
+      if (nextSession) {
+        setAuthOpen(false)
+      }
+    })
+
+    return () => {
+      active = false
+      subscription.unsubscribe()
+    }
+  }, [])
+
+  const handleEbookPurchase = () => {
+    if (!session) {
+      setAuthOpen(true)
+      return
+    }
+
+    window.alert(
+      'You are signed in. Paystack checkout will be connected during UAT.',
+    )
+  }
+
+  const handleSignOut = async () => {
+    const { error } = await supabase.auth.signOut()
+
+    if (error) {
+      window.alert('We could not sign you out. Please try again.')
+    }
+  }
 
   return (
     <div className="site-shell">
@@ -80,6 +129,36 @@ function App() {
             <a className="nav-cta" href="#buy" onClick={closeMenu}>
               Buy the Book
             </a>
+
+            {session ? (
+              <div className="account-nav">
+                <span className="account-email">
+                  {session.user.email}
+                </span>
+
+                <button
+                  className="account-signout"
+                  type="button"
+                  onClick={() => {
+                    closeMenu()
+                    void handleSignOut()
+                  }}
+                >
+                  Sign Out
+                </button>
+              </div>
+            ) : (
+              <button
+                className="account-signin"
+                type="button"
+                onClick={() => {
+                  closeMenu()
+                  setAuthOpen(true)
+                }}
+              >
+                Sign In
+              </button>
+            )}
           </nav>
         </div>
       </header>
@@ -384,11 +463,7 @@ function App() {
                   <button
                     className="button button-gold purchase-button"
                     type="button"
-                    onClick={() =>
-                      window.alert(
-                        'E-book checkout will be connected to Paystack during UAT.',
-                      )
-                    }
+                    onClick={handleEbookPurchase}
                   >
                     Pay ₦100 for E-Book
                     <span aria-hidden="true">→</span>
@@ -458,6 +533,11 @@ function App() {
           </div>
         </section>
       </main>
+
+      <AuthModal
+        open={authOpen}
+        onClose={() => setAuthOpen(false)}
+      />
 
       <footer className="site-footer">
         <div className="container footer-main">
